@@ -1,49 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
+using InterfaceExercise;
 
-namespace InterfaceExercise
+
+// Creating objects of Car, Truck, and SUV classes
+Car myCar = new Car
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            //TODO Be sure to follow BEST PRACTICES when creating classes and interfaces
+    Manufacturer = "BMW AG",
+    BodyType = "Coupe",
+    Year = 2024,
+    Make = "BMW",
+    Model = "M4",
+    HasEngine = true,
+    Logo = "Bavarian flag",
+    HeadQuater = "Munich",
+};
 
-            //Create 2 Interfaces called IVehicle & ICompany
+Truck truck1 = new Truck
+{
+    HasTrailer = true,
+    CargoCapacity = 12000,
+    Year = 2024,
+    Make = "Toyota",
+    Model = "Tundra",
+    HasEngine = true,
+    Logo = "Two ovals",
+    HeadQuater = "Aichi Japan",
+};
 
-            //Create 3 classes called Car , Truck , & SUV
+SUV Suv1 = new SUV
+{
+    NumberOfSeats = 8,
+    HasFourWheelDrive = true,
+    Year = 2024,
+    Make = "Ford",
+    Model = "Expedition",
+    HasEngine = true,
+    Logo = "Flattened oval",
+    HeadQuater = "Dearborn MI",
 
-            //In your IVehicle:
-            
-                /* Create 4 members that Car, Truck, & SUV all have in common.
-                 * Example: public int NumberOfWheels { get; set; }
-                 */
-            
+};
 
-            //In ICompany: 
-            
-                /* Create 2 members that are specific to each every company
-                 * regardless of vehicle type.
-                 * Example: public string Logo { get; set; }
-                 */
+List<IVehicle> vehicles = new List<IVehicle>();
 
-            //In each of your Car, Truck, and SUV classes
+vehicles.Add(myCar);
+vehicles.Add(truck1);
+vehicles.Add(Suv1);
 
-                /* Create 2 members that are specific to each class
-                 * Example for Car: public bool HasTrunk { get; set; }
-                 * Example for SUV: public int NumberOfSeats { get; set; }
-                 *
-                 * Then, Set each class to inherit from both IVehicle and ICompany and implement their members.
-                 */
-
-            //Now, create objects of your 3 classes and give their members values.
-            //Creatively display and organize their values
-            
-            //Option for displaying values: 
-            //Create a stubbed out method called DisplayDetails in your IVehicle interface.
-            //Implement the stubbed out method in the derived classes.
-            //In the scope of them method, use string interpolation to display property values.
-            //In order to also interpolate values from ICompany, research how to extend interfaces.
-            
-        }
-    }
+foreach (IVehicle item in vehicles)
+{
+    item.DisplayDetails();
+    Console.WriteLine();
 }
